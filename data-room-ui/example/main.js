@@ -20,6 +20,13 @@ Vue.prototype.Column = Column
 registerConfig(
   {
     routers: {
+      // 首页
+      homeUrl: '/home',
+      // 登录
+      loginUrl: '/login',
+      // 设备管理
+      deviceUrl: '/devices-list',
+      scheduledTaskUrl: '/scheduled-task',
       // 大屏设计路由
       designUrl: '/bigscreen/design',
       // 预览路由

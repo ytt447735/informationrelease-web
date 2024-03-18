@@ -1,6 +1,6 @@
 <template>
   <el-dialog
-    title="设计分工"
+    title="发布节目"
     :visible.sync="dialogVisible"
     width="65%"
     :modal="true"

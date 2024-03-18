@@ -2,7 +2,7 @@
   <div>
     <el-dialog
       :close-on-click-modal="false"
-      :title="title ? '编辑大屏' : '新增大屏'"
+      :title="title ? '编辑节目' : '新增节目'"
       :visible.sync="formVisible"
       :append-to-body="true"
       class="bs-dialog-wrap bs-el-dialog"
@@ -31,7 +31,7 @@
         </el-form-item>
         <el-form-item
           v-if="!!dataForm.id"
-          label="大屏编码"
+          label="节目编码"
         >
           <el-input
             style="width: 200px"

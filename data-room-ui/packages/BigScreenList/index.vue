@@ -5,7 +5,7 @@
         <el-input
           v-model="searchKey"
           class="bs-el-input bs-el-input-search"
-          :placeholder="type === 'bigScreenCatalog' ? '请输入大屏名称' : '请输入组件名称'"
+          :placeholder="type === 'bigScreenCatalog' ? '请输入节目名称' : '请输入组件名称'"
           prefix-icon="el-icon-search"
           clearable
           @clear="reSearch"
@@ -39,7 +39,7 @@
             <div class="add-big-screen-card">
               <div class="add-big-screen-card-inner">
                 <div class="add-big-screen-card-text">
-                  新增{{ type === 'bigScreenCatalog' ? '大屏' : '组件' }}
+                  新增{{ type === 'bigScreenCatalog' ? '节目' : '组件' }}
                 </div>
               </div>
             </div>
@@ -62,7 +62,7 @@
                     class="screen-card__oper-label circle"
                     @click="preview(screen)"
                   >
-                    <span>访问</span>
+                    <span>预览</span>
                   </div>
                   <div
                     class="circle"

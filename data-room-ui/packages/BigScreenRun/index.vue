@@ -71,6 +71,7 @@ export default {
       initChartList: [],
     }
   },
+
   computed: {
     ...mapState({
       pageInfo: state => state.bigScreen.pageInfo,
@@ -168,6 +169,16 @@ export default {
     this.windowSize()
   },
   mounted () {
+    // console.log('加载完毕了')
+    // // this.clearCache() // 清除缓存
+    // console.log('cacheCleared', localStorage.getItem('cacheCleared'))
+    // localStorage.setItem('cacheCleared', false)
+    // if (localStorage.getItem('cacheCleared') === 'false') {
+    //   console.log('开始刷新页面...')
+    //   location.reload(true)
+    //   // location.reload()
+    //   localStorage.setItem('cacheCleared', true)
+    // }
     if (this.pageInfo.pageConfig.refreshConfig && this.pageInfo.pageConfig.refreshConfig.length > 0) {
       this.startTimer()
     }
@@ -176,6 +187,13 @@ export default {
     this.stopTimer()
   },
   methods: {
+    clearCache () {
+      // 清除缓存
+      console.log('Clearing cache...')
+      localStorage.clear()
+      sessionStorage.clear()
+      console.log('Cache cleared!')
+    },
     ...mapActions('bigScreen', [
       'initLayout' // -> this.initLayout()
     ]),
@@ -233,6 +251,11 @@ export default {
       this.initLayout(this.pageCode).then(() => {
         this.changePageLoading(false)
         this.getParentWH()
+        // 自动刷新一次
+        if (location.href.indexOf('#reloaded') === -1) {
+          location.href = location.href + '#reloaded'
+          location.reload()
+        }
       })
     },
     // 设置定时器

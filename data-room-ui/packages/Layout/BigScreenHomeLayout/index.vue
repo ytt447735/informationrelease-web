@@ -52,8 +52,8 @@ export default {
   },
   computed: {
     title () {
-      if (this.$route.query.edit) return '大屏设计器'
-      return window?.BS_CONFIG?.starter?.title ?? 'DataRoom大屏设计器'
+      if (this.$route.query.edit) return '信息发布系统'
+      return window?.BS_CONFIG?.starter?.title ?? '信息发布系统'
     },
     logo () {
       return window?.BS_CONFIG?.starter?.logo ?? require('./images/logo.png')
@@ -76,9 +76,27 @@ export default {
         ]
       }
       return [
+        // {
+        //   id: 0,
+        //   name: '首页',
+        //   path: window?.BS_CONFIG?.routers?.homeUrl || '/home',
+        //   icon: 'icon-icon-home'
+        // },
         {
           id: 0,
-          name: '大屏管理',
+          name: '设备管理',
+          path: window?.BS_CONFIG?.routers?.deviceUrl || '/devices-list',
+          icon: 'icon-icon-devices'
+        },
+        {
+          id: 1,
+          name: '任务管理',
+          path: window?.BS_CONFIG?.routers?.scheduledTaskUrl || '/scheduled-task',
+          icon: 'icon-icon-scheduled'
+        },
+        {
+          id: 2,
+          name: '节目管理',
           path: window?.BS_CONFIG?.routers?.pageListUrl || '/big-screen-list',
           icon: 'icon-icon-shujudaping'
         },
@@ -89,47 +107,47 @@ export default {
         //   icon: 'icon-xiangmuwenjianmobanku_mobanku'
         // },
         {
-          id: 1,
+          id: 3,
           name: '资源库',
           path: window?.BS_CONFIG?.routers?.sourceUrl || '/big-screen-source',
           icon: 'icon-tupian'
         },
         {
-          id: 2,
+          id: 4,
           name: '组件库',
           path: window?.BS_CONFIG?.routers?.componentUrl || '/big-screen-components',
           icon: 'icon-zujian1'
         },
-        {
-          id: 3,
-          name: '数据源管理',
-          path:
-            window?.BS_CONFIG?.routers?.dataSourceUrl ||
-            '/big-screen-dataSource',
-          icon: 'icon-datafull'
-        },
-        {
-          id: 4,
-          name: '数据集管理',
-          path: window?.BS_CONFIG?.routers?.dataSetUrl || '/big-screen-dataSet',
-          icon: 'icon-data'
-        },
-        {
-          id: 5,
-          name: '地图数据管理',
-          path: '/big-screen-map-data',
-          icon: 'icon-data'
-        }
+        // {
+        //   id: 5,
+        //   name: '数据源管理',
+        //   path:
+        //     window?.BS_CONFIG?.routers?.dataSourceUrl ||
+        //     '/big-screen-dataSource',
+        //   icon: 'icon-datafull'
+        // },
+        // {
+        //   id: 6,
+        //   name: '数据集管理',
+        //   path: window?.BS_CONFIG?.routers?.dataSetUrl || '/big-screen-dataSet',
+        //   icon: 'icon-data'
+        // },
+        // {
+        //   id: 7,
+        //   name: '地图数据管理',
+        //   path: '/big-screen-map-data',
+        //   icon: 'icon-data'
+        // }
       ]
     }
   },
   created () {
     document.title = this.title
   },
-  mounted () {
-    this.giteeHref = 'https://gitee.com/gcpaas/DataRoom'
-    this.giteeSvg = 'https://gitee.com/gcpaas/DataRoom/widgets/widget_1.svg?color=007bff'
-  },
+  // mounted () {
+  //   this.giteeHref = 'https://gitee.com/gcpaas/DataRoom'
+  //   this.giteeSvg = 'https://gitee.com/gcpaas/DataRoom/widgets/widget_1.svg?color=007bff'
+  // },
   methods: {
     changeTab (tab) {
       if (this.$route.query.edit) {

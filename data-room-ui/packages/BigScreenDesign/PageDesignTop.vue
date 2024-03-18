@@ -52,12 +52,6 @@
         </el-dropdown-menu>
       </el-dropdown>
 
-      <CusBtn
-        :loading="saveAndPreviewLoading"
-        @click.native="designAssign()"
-      >
-        设计分工
-      </CusBtn>
       <CusBtn @click.native="showHostory">
         历史操作
       </CusBtn>
@@ -73,11 +67,17 @@
       >
         <i class="iconfont-bigscreen icon-jiantouqianjin" />
       </CusBtn>
-      <CusBtn
+      <!-- <CusBtn
         :loading="saveAndPreviewLoading"
         @click.native="createdImg()"
       >
         生成图片
+      </CusBtn> -->
+      <CusBtn
+        :loading="saveAndPreviewLoading"
+        @click.native="designAssign()"
+      >
+        发布节目
       </CusBtn>
       <CusBtn
         :loading="saveAndPreviewLoading"
@@ -110,6 +110,7 @@
       :page-info="pageInfo"
       @replaceItByTemplate="replaceItByTemplate"
     />
+    <DevicesDialog ref="DevicesDialog" />
     <AssignDialog ref="AssignDialog" />
     <HistoryList ref="HistoryList" />
   </div>
@@ -125,6 +126,7 @@ import cloneDeep from 'lodash/cloneDeep'
 import uniqBy from 'lodash/uniqBy'
 import { stringifyObjectFunctions } from 'data-room-ui/js/utils/evalFunctions'
 import AssignDialog from 'data-room-ui/BigScreenDesign/AssignDialog/index.vue'
+import DevicesDialog from 'data-room-ui/DevicesList/SourceDialog/index.vue'
 import HistoryList from 'data-room-ui/BigScreenDesign/HistoryList/index.vue'
 import CusBtn from './BtnLoading'
 import icons from 'data-room-ui/assets/images/alignIcon/export'
@@ -141,7 +143,8 @@ export default {
     ChooseTemplateDialog,
     AssignDialog,
     CusBtn,
-    HistoryList
+    HistoryList,
+    DevicesDialog
   },
   props: {
     code: {
@@ -550,7 +553,13 @@ export default {
       this.$emit('showPageInfo')
     },
     designAssign () {
-      this.$refs.AssignDialog.init()
+      // this.$refs.AssignDialog.init()
+      this.save('saveLoading').then((res) => {
+        if (res) {
+          this.$refs.DevicesDialog.init()
+        }
+      })
+      // this.$refs.DevicesDialog.init()
     },
     showHostory () {
       this.$refs.HistoryList.init()

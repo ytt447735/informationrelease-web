@@ -39,7 +39,7 @@ export default {
       // 和此处路由保持一致，将会激活tab，请按需更改
       tabList: [
         {
-          name: '大屏管理',
+          name: '节目管理',
           path: window.BS_CONFIG?.routers?.pageManagementUrl || '/pages'
         },
         {

@@ -37,16 +37,43 @@ function registerRouters (config, router) {
     // 页面管理
     {
       path: config?.routers?.pageManagementUrl || '/management',
-      redirect: config?.routers?.pageListUrl || '/big-screen-list',
+      redirect: config?.routers?.deviceUrl || '/devices-list',
       component: () => import('data-room-ui/Layout/BigScreenHomeLayout'),
       children: [
+        // {
+        //   path: config?.routers?.homeUrl || '/home',
+        //   name: 'Home',
+        //   component: () =>
+        //     require.ensure([], () => require('data-room-ui/Home')),
+        //   meta: {
+        //     title: '首页'
+        //   }
+        // },
+        {
+          path: config?.routers?.deviceUrl || '/devices-list',
+          name: 'DevicesList',
+          component: () =>
+            require.ensure([], () => require('data-room-ui/DevicesList')),
+          meta: {
+            title: '设备管理'
+          }
+        },
+        {
+          path: config?.routers?.scheduledTaskUrl || '/scheduled-task',
+          name: 'ScheduledTask',
+          component: () =>
+            require.ensure([], () => require('data-room-ui/ScheduledTask')),
+          meta: {
+            title: '定时任务'
+          }
+        },
         {
           path: config?.routers?.pageListUrl || '/big-screen-list',
           name: 'BigScreenList',
           component: () =>
             require.ensure([], () => require('data-room-ui/BigScreenMag')),
           meta: {
-            title: '大屏管理'
+            title: '节目管理'
           }
         },
         {
@@ -94,6 +121,18 @@ function registerRouters (config, router) {
           }
         }
       ]
+    },
+    {
+      path: config?.routers?.homeUrl || '/home',
+      name: 'Home',
+      component: () =>
+        require.ensure([], () => require('data-room-ui/Home'))
+    },
+    {
+      path: config?.routers?.loginUrl || '/login',
+      name: 'Login',
+      component: () =>
+        require.ensure([], () => require('data-room-ui/Login'))
     },
     {
       path: config?.routers?.designUrl || '/big-screen/design',
